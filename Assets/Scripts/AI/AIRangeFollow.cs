@@ -136,7 +136,6 @@ public class AIRangeFollow : MonoBehaviour
     }
 
 
-
 private void GetTarget()
 {
     if (GameObject.FindGameObjectWithTag("Player"))
