@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class CharacterController : MonoBehaviour
 {
     [SerializeField]
     private float speed;
+
+    private bool canMove = false;
 
     [SerializeField]
     private float rotationSpeed;
@@ -26,19 +28,25 @@ public class Movement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-
         Vector2 movementDirection = new Vector2(horizontalInput, verticalInput);
         float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
-        movementDirection.Normalize();
 
-        transform.Translate(movementDirection * speed * inputMagnitude * Time.deltaTime, Space.World);
-            Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 direction = -(mouseScreenPosition - (Vector2)transform.position).normalized;
-
-            transform.up = direction;
-
-
-    
+        if (canMove)
+        {
+            movementDirection.Normalize();
+            transform.Translate(movementDirection * speed * inputMagnitude * Time.deltaTime, Space.World);
         }
-}
 
+        Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = -(mouseScreenPosition - (Vector2)transform.position).normalized;
+
+        transform.up = direction;
+
+    }
+
+// Method to enable or disable player movement
+public void EnableMovement(bool enable)
+    {
+        canMove = enable;
+    }
+}
