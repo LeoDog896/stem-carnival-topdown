@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4691382707223687597}
   - component: {fileID: -5431568289485757215}
   m_Layer: 6
-  m_Name: brawler
+  m_Name: Brawler
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
