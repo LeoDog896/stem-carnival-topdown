@@ -60,16 +60,16 @@ public class EnemyHealthTracking : MonoBehaviour
 
     void Die()
     {
-        Time.timeScale = 0f;
         // Add game over logic here, such as displaying a game over screen, resetting the level, etc.
         Debug.Log("Player died!");
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && !isCooldown)
+        if (collision.gameObject.CompareTag("Player") && !isCooldown)
         {
-            TakeDamage(1, collision.relativeVelocity.normalized * knockbackForce);
+            Health healthC = collision.gameObject.GetComponent<Health>();
+            healthC.TakeDamage(1);
             StartCooldown();
         }
     }
