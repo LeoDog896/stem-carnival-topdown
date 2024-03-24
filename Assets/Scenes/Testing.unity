@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 760094743}
   - component: {fileID: 760094742}
   m_Layer: 5
-  m_Name: health
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ RectTransform:
   m_GameObject: {fileID: 760094740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.55, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1439349487}
@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -291.06, y: 211.2}
-  m_SizeDelta: {x: -582.112, y: -400.18}
+  m_AnchoredPosition: {x: -453.08, y: 321.48}
+  m_SizeDelta: {x: -906.16, y: -642.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &760094742
 MonoBehaviour:
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 796011280}
   - component: {fileID: 796011279}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -685,7 +685,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 50.98105, y: 44.61628}
+  m_Size: {x: 90, y: 50}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 1439349489}
   - component: {fileID: 1439349488}
   m_Layer: 5
-  m_Name: healthtxt
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -836,7 +836,7 @@ RectTransform:
   m_GameObject: {fileID: 1439349486}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.8181818, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 760094741}
@@ -880,7 +880,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: health; NONE!!!!
+  m_Text: 'Health: 0'
 --- !u!222 &1439349489
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1049,7 +1049,7 @@ GameObject:
   - component: {fileID: 2102425048}
   - component: {fileID: 2102425047}
   m_Layer: 3
-  m_Name: mainplayer
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -50,7 +50,7 @@ public class Tutorial : MonoBehaviour
             if (characterController != null)
             {
                 characterController.EnableMovement(true);
-                StartCoroutine(ShowTutorialMessage("Move Around With The Joystick!!", 2f));
+                StartCoroutine(ShowTutorialMessage("Move around with the joystick!", 2f));
             }
         }
         if (message == "Move Around With The Joystick!!")
@@ -59,7 +59,7 @@ public class Tutorial : MonoBehaviour
             yield return new WaitForSeconds(duration);
             StartCoroutine(ShowTutorialMessage("Enemies will spawn outside of the Camera, so look out!", 2f));
             yield return new WaitForSeconds(duration);
-            StartCoroutine(ShowTutorialMessage("Lastly, you get score from kills, and you have a health bar! The rest will be obvious. Have Fun!", 3f));
+            StartCoroutine(ShowTutorialMessage("Lastly, you get score from kills, and you have a health bar! The rest, you will learn along the way. Have fun!", 3f));
             yield return new WaitForSeconds(duration);
             Panel.SetActive(false);
             tutorialText.enabled = false;
