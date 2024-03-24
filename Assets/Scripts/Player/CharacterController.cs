@@ -19,11 +19,12 @@ public class CharacterController : MonoBehaviour
 
     private void Update()
     {
+        RotateTowardsMouse();
+
         if (canMove)
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
-            RotateTowardsMouse();
             HandleHitboxActivation();
         }
     }
@@ -44,7 +45,7 @@ public class CharacterController : MonoBehaviour
 
     private void HandleHitboxActivation()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !hitbox.activeSelf)
         {
             StartCoroutine(ActivateHitbox());
         }
