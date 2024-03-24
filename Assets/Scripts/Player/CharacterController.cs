@@ -8,6 +8,10 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private GameObject hitbox;
     private bool canMove = false;
 
+    public Rigidbody2D rigidBody;
+
+    Vector2 movement;
+
     private void Start()
     {
         hitbox.SetActive(false); // Ensure hitbox is initially disabled
@@ -17,25 +21,25 @@ public class CharacterController : MonoBehaviour
     {
         if (canMove)
         {
-            Move();
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
             RotateTowardsMouse();
             HandleHitboxActivation();
         }
     }
 
-    private void Move()
+    private void FixedUpdate()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Vector2 movementDirection = new Vector2(horizontalInput, verticalInput).normalized;
-        transform.Translate(speed * Time.deltaTime * movementDirection, Space.World);
+        rigidBody.MovePosition(rigidBody.position + movement * speed * Time.fixedDeltaTime);
     }
 
     private void RotateTowardsMouse()
     {
         Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = -(mouseScreenPosition - (Vector2)transform.position).normalized;
-        transform.up = direction;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
     }
 
     private void HandleHitboxActivation()
