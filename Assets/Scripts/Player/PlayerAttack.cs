@@ -41,15 +41,10 @@ public class PlayerAttack : MonoBehaviour
         if (collision.gameObject.gameObject.tag == "Enemy")
         {
             if (touching){
-                var ai = collision.gameObject.GetComponent<AIFollow>();
-                var aiRanged = collision.gameObject.GetComponent<AIRangeFollow>();
-                if (ai)
+                var tracker = collision.gameObject.GetComponent<EnemyHealthTracking>();
+                if (tracker)
                 {
-                    ai.TakeDamage(1);
-                }
-                else
-                {
-                    aiRanged.TakeDamage(1);
+                    tracker.TakeDamage(1, (collision.transform.position - transform.position).normalized);
                 }
             }
         }
