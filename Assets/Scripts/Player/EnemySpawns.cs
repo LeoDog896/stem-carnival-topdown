@@ -63,8 +63,8 @@ public class EnemySpawns : MonoBehaviour
 
         // Generate random spawn position outside of the camera view
         Vector3 spawnPosition = new Vector3(
-            Random.value > 0.5f ? Random.Range(minX - 10, minX) : Random.Range(maxX + 10, maxX),
-            Random.value > 0.5f ? Random.Range(minY - 10, minY) : Random.Range(maxY + 10, maxY),
+            Random.value > 0.5f ? Random.Range(minX - 4, minX) : Random.Range(maxX + 10, maxX),
+            Random.value > 0.5f ? Random.Range(minY - 4, minY) : Random.Range(maxY + 10, maxY),
             0f
         );
 
