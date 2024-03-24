@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
@@ -29,7 +28,7 @@ public class CharacterController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         Vector2 movementDirection = new Vector2(horizontalInput, verticalInput).normalized;
-        transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
+        transform.Translate(speed * Time.deltaTime * movementDirection, Space.World);
     }
 
     private void RotateTowardsMouse()

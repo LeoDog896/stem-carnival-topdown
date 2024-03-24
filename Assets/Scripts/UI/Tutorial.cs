@@ -53,7 +53,7 @@ public class Tutorial : MonoBehaviour
                 StartCoroutine(ShowTutorialMessage("Move around with the joystick!", 2f));
             }
         }
-        if (message == "Move Around With The Joystick!!")
+        if (message == "Move around with the joystick!")
         {
             StartCoroutine(ShowTutorialMessage("Press E to Attack, and Press F to Kick!", 2f));
             yield return new WaitForSeconds(duration);
