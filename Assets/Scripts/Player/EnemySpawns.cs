@@ -61,11 +61,12 @@ public class EnemySpawns : MonoBehaviour
             return;
         }
 
-        // Generate random spawn position outside of the camera view
-        Vector3 spawnPosition = new Vector3(
-            Random.value > 0.5f ? Random.Range(minX - 4, minX) : Random.Range(maxX + 4, maxX),
-            Random.value > 0.5f ? Random.Range(minY - 4, minY) : Random.Range(maxY + 4, maxY),
-            0f
+        var quart = Random.value;
+        Vector3 spawnPosition = (
+            quart > 0.75f ? new Vector3(Random.Range(minX - 4, minX), Random.Range(minY - 4, minY), 0f) :
+            quart > 0.5f ? new Vector3(Random.Range(maxX + 4, maxX), Random.Range(minY - 4, minY), 0f) :
+            quart > 0.25f ? new Vector3(Random.Range(minX - 4, minX), Random.Range(maxY + 4, maxY), 0f) :
+            new Vector3(Random.Range(maxX + 4, maxX), Random.Range(maxY + 4, maxY), 0f)
         );
 
         // Randomly select an enemy prefab

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class EnemyHealthTracking : MonoBehaviour
 {
+    [SerializeField] private GameObject destroyTarget;
+
     public int maxHealth = 3;
     public int currentHealth;
 
@@ -40,7 +42,7 @@ public class EnemyHealthTracking : MonoBehaviour
         }
         else
         {
-            ApplyKnockback(hitDirection);
+            ApplyKnockback(hitDirection.normalized);
         }
     }
 
@@ -61,7 +63,19 @@ public class EnemyHealthTracking : MonoBehaviour
     void Die()
     {
         // Add game over logic here, such as displaying a game over screen, resetting the level, etc.
-        Debug.Log("Player died!");
+        if (gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player died!");
+        } else { 
+            if (destroyTarget != null)
+            {
+                Destroy(destroyTarget);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)

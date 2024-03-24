@@ -81,7 +81,14 @@ public class Health : MonoBehaviour
 
     void UpdateHealthText()
     {
-        healthText.text = "Health: " + currentHealth.ToString();
+        if (currentHealth <= 0)
+        {
+            healthText.text = "Health: 0";
+        }
+        else
+        {
+            healthText.text = "Health: " + currentHealth.ToString();
+        }
     }
 
 }
