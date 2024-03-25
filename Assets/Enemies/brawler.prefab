@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2230505098744518827}
   m_Layer: 6
-  m_Name: Brawler
+  m_Name: brawler
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,9 +289,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTarget: {fileID: 2230505098744518828}
+  addedScore: 3
   maxHealth: 3
   currentHealth: 3
   knockbackForce: 5
+  enemyHitSound: {fileID: 0}
+  enemyDeathSound: {fileID: 0}
 --- !u!1 &7732828132648831627
 GameObject:
   m_ObjectHideFlags: 0

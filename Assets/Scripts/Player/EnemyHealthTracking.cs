@@ -6,6 +6,8 @@ public class EnemyHealthTracking : MonoBehaviour
 {
     [SerializeField] private GameObject destroyTarget;
 
+    [SerializeField] private int addedScore = 0;
+
     public int maxHealth = 3;
     public int currentHealth;
 
@@ -44,6 +46,7 @@ public class EnemyHealthTracking : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            ScoreHandler.score += addedScore;
             Die();
         }
         else
