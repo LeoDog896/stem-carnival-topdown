@@ -9,11 +9,15 @@ public class EnemyHealthTracking : MonoBehaviour
     public int maxHealth = 3;
     public int currentHealth;
 
-    private bool isCooldown = false;
     private float cooldownDuration = 0.1f;
     private float cooldownTimer = 0.0f;
 
     public float knockbackForce = 5f; // Adjust the knockback force magnitude
+
+    // audio
+    [SerializeField] private AudioClip enemyHitSound;
+    [SerializeField] private AudioClip enemyDeathSound;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -22,18 +26,20 @@ public class EnemyHealthTracking : MonoBehaviour
 
     void Update()
     {
-        if (isCooldown)
+        if (cooldownTimer > 0.0f)
         {
-            cooldownTimer -= Time.deltaTime;
-            if (cooldownTimer <= 0.0f)
-            {
-                isCooldown = false; // Cooldown is over
-            }
+            cooldownTimer = Mathf.Max(0.0f, cooldownTimer - Time.deltaTime);
         }
     }
 
     public void TakeDamage(int damageAmount, Vector2 hitDirection)
     {
+        if (cooldownTimer > 0.0f)
+        {
+            return; // Ignore damage if still on cooldown
+        }
+
+        cooldownTimer = cooldownDuration;
         currentHealth -= damageAmount;
 
         if (currentHealth <= 0)
@@ -76,21 +82,5 @@ public class EnemyHealthTracking : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player") && !isCooldown)
-        {
-            Health healthC = collision.gameObject.GetComponent<Health>();
-            healthC.TakeDamage(1);
-            StartCooldown();
-        }
-    }
-
-    private void StartCooldown()
-    {
-        isCooldown = true;
-        cooldownTimer = cooldownDuration;
     }
 }
